@@ -7,3 +7,10 @@ D:\DMB\DMB.Frame\bin\Debug\MIS.Frame.dll
 D:\DMB\DMB.Frame\bin\Debug\MIS.Frame.pdb
 D:\DMB\DMB.Frame\obj\Debug\MIS.Frame.dll
 D:\DMB\DMB.Frame\obj\Debug\MIS.Frame.pdb
+D:\MIS\MIS.Frame\bin\Debug\MIS.Frame.dll
+D:\MIS\MIS.Frame\bin\Debug\MIS.Frame.pdb
+D:\MIS\MIS.Frame\bin\Debug\log4net.dll
+D:\MIS\MIS.Frame\bin\Debug\log4net.xml
+D:\MIS\MIS.Frame\obj\Debug\MIS.Frame.csprojResolveAssemblyReference.cache
+D:\MIS\MIS.Frame\obj\Debug\MIS.Frame.dll
+D:\MIS\MIS.Frame\obj\Debug\MIS.Frame.pdb

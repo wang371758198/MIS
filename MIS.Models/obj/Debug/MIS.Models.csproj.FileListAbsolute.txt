@@ -14,3 +14,17 @@ D:\DMB\DMB.Models\bin\Debug\MIS.Models.dll
 D:\DMB\DMB.Models\bin\Debug\MIS.Models.pdb
 D:\DMB\DMB.Models\obj\Debug\MIS.Models.dll
 D:\DMB\DMB.Models\obj\Debug\MIS.Models.pdb
+D:\MIS\MIS.Models\bin\Debug\MIS.Models.dll.config
+D:\MIS\MIS.Models\bin\Debug\MIS.Models.dll
+D:\MIS\MIS.Models\bin\Debug\MIS.Models.pdb
+D:\MIS\MIS.Models\bin\Debug\EntityFramework.dll
+D:\MIS\MIS.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\MIS\MIS.Models\bin\Debug\Newtonsoft.Json.dll
+D:\MIS\MIS.Models\bin\Debug\EntityFramework.xml
+D:\MIS\MIS.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\MIS\MIS.Models\bin\Debug\Newtonsoft.Json.xml
+D:\MIS\MIS.Models\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\MIS\MIS.Models\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\MIS\MIS.Models\obj\Debug\MIS.Models.csprojResolveAssemblyReference.cache
+D:\MIS\MIS.Models\obj\Debug\MIS.Models.dll
+D:\MIS\MIS.Models\obj\Debug\MIS.Models.pdb

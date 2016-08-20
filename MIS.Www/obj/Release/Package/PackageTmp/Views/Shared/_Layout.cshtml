@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link href="~/Resource/lib/assets/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="~/Resource/lib/assets/css/font-awesome.css" type="text/css" rel="stylesheet" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="~/Resource/lib/assets/css/jquery-ui.css" />
+    <link rel="stylesheet" href="~/Resource/lib/assets/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="~/Resource/lib/assets/css/ui.jqgrid.css" />
+
+
+    <!--font text -->
+    <link href="~/Resource/lib/assets/css/ace-fonts.css" type="text/css" rel="stylesheet" />
+
+    <!-- ace styles -->
+    <link href="~/Resource/lib/assets/css/ace.css" type="text/css" rel="stylesheet" />
+
+    <!--[if lte IE 9]>
+            <link rel="stylesheet" href="~/Resource/lib/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+        <![endif]-->
+    <!--[if lte IE 9]>
+      <link rel="stylesheet" href="~/Resource/lib/assets/css/ace-ie.css" />
+    <![endif]-->
+
+    <link href="~/Resource/syntaxhighlighter/styles/shCore.css" type="text/css" rel="stylesheet" />
+    <link href="~/Resource/syntaxhighlighter/styles/shCoreDefault.css" type="text/css" rel="stylesheet" />
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    @RenderSection("styles", false)
+    <script src="~/Resource/lib/assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="~/Resource/lib/assets/js/html5shiv.js"></script>
+    <script src="~/Resource/lib/assets/js/respond.js"></script>
+    <![endif]-->
+</head>
+<body class="no-skin">
+    <!--top-->
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+        </script>
+
+        <div class="navbar-container" id="navbar-container">
+            <!-- #section:basics/sidebar.mobile.toggle -->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- /section:basics/sidebar.mobile.toggle -->
+            <div class="navbar-header pull-left">
+                <!-- #section:basics/navbar.layout.brand -->
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        浩瀚的记忆
+                    </small>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        @RenderPage("_PartialSidebar.cshtml")
+        <div class="main-content">
+            <div class="main-content-inner">
+                @RenderPage("_PositionPartial.cshtml")
+                @RenderBody()
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-110">
+                        &copy; 2016-2017   王俊桥 版权所有   <a href="http://www.miitbeian.gov.cn">豫ICP备16014795号-1</a> 
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
+
+</body>
+</html>
+
+<!--[if !IE]> -->
+<script type="text/javascript" src="~/Resource/lib/jquery/jquery-1.9.1.min.js"></script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='/Resource/lib/assets/js/jquery1x.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script src='/Resource/lib/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+</script>
+<script src="~/Resource/lib/assets/js/bootstrap.js"></script>
+
+<!-- page specific plugin scripts -->
+<!--[if lte IE 8]>
+  <script src="~/Resource/lib/assets/js/excanvas.js"></script>
+<![endif]-->
+<script src="~/Resource/lib/assets/js/jquery-ui.custom.js"></script>
+<script src="~/Resource/lib/assets/js/jquery.ui.touch-punch.js"></script>
+<script src="~/Resource/lib/assets/js/jquery.easypiechart.js"></script>
+<script src="~/Resource/lib/assets/js/jquery.sparkline.js"></script>
+<script src="~/Resource/lib/assets/js/flot/jquery.flot.js"></script>
+<script src="~/Resource/lib/assets/js/flot/jquery.flot.pie.js"></script>
+<script src="~/Resource/lib/assets/js/flot/jquery.flot.resize.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="~/Resource/lib/assets/js/date-time/bootstrap-datepicker.js"></script>
+<script src="~/Resource/lib/assets/js/jqGrid/jquery.jqGrid.js"></script>
+<script src="~/Resource/lib/assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
+
+<!-- ace scripts -->
+<script src="~/Resource/lib/assets/js/ace/elements.scroller.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.colorpicker.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.fileinput.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.typeahead.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.wysiwyg.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.spinner.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.treeview.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.wizard.js"></script>
+<script src="~/Resource/lib/assets/js/ace/elements.aside.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.ajax-content.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.touch-drag.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.sidebar.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.submenu-hover.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.widget-box.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.settings.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.settings-rtl.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.settings-skin.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.widget-on-reload.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+
+<!-- inline scripts related to this page -->
+<!-- inline scripts related to this page -->
+
+
+@RenderSection("scripts", required: false)
+
+
+<!-- the following scripts are used in demo only for onpage help and you don't need them -->
+<link rel="stylesheet" href="~/Resource/lib/assets/css/ace.onpage-help.css" />
+<link rel="stylesheet" href="~/Resource/lib/docs/assets/js/themes/sunburst.css" />
+
+<script type="text/javascript"> ace.vars['base'] = ''; </script>
+<script src="~/Resource/lib/assets/js/ace/elements.onpage-help.js"></script>
+<script src="~/Resource/lib/assets/js/ace/ace.onpage-help.js"></script>
+<script src="~/Resource/lib/docs/assets/js/rainbow.js"></script>
+<script src="~/Resource/lib/docs/assets/js/language/generic.js"></script>
+<script src="~/Resource/lib/docs/assets/js/language/html.js"></script>
+<script src="~/Resource/lib/docs/assets/js/language/css.js"></script>
+<script src="~/Resource/lib/docs/assets/js/language/javascript.js"></script>
+
+<!--代码高亮-->
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shCore.js"></script>
+
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="~/Resource/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<script type="text/javascript">
+    SyntaxHighlighter.highlight();
+</script>

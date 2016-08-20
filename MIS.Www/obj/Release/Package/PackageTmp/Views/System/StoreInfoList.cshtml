@@ -1,0 +1,143 @@
+﻿
+@{
+
+    ViewBag.PositionRoot = "系统设置";
+    ViewBag.PositionSecond = "门店信息";
+}
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="list2"></table>
+
+            <div id="pager2"></div>
+        </div>
+    </div>
+    </div>
+    @section scripts{
+        <script type="text/javascript">
+            var grid_data =
+                [
+                    { id: "1", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "2", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03" },
+                    { id: "3", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03" },
+                    { id: "4", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03" },
+                    { id: "5", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "6", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "7", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03" },
+                    { id: "8", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03" },
+                    { id: "9", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "10", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "11", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03" },
+                    { id: "12", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03" },
+                    { id: "13", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03" },
+                    { id: "14", name: "Laser Printer", note: "note2", stock: "Yes", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "15", name: "Play Station", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "16", name: "Mobile Telephone", note: "note", stock: "Yes", ship: "ARAMEX", sdate: "2007-12-03" },
+                    { id: "17", name: "Server", note: "note2", stock: "Yes", ship: "TNT", sdate: "2007-12-03" },
+                    { id: "18", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "19", name: "Matrix Printer", note: "note3", stock: "No", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "20", name: "Desktop Computer", note: "note", stock: "Yes", ship: "FedEx", sdate: "2007-12-03" },
+                    { id: "21", name: "Laptop", note: "Long text ", stock: "Yes", ship: "InTime", sdate: "2007-12-03" },
+                    { id: "22", name: "LCD Monitor", note: "note3", stock: "Yes", ship: "TNT", sdate: "2007-12-03" },
+                    { id: "23", name: "Speakers", note: "note", stock: "No", ship: "ARAMEX", sdate: "2007-12-03" }
+                ];
+
+
+            jQuery(function ($) {
+                var grid_selector = "#list2";
+                var pager_selector = "#pager2";
+
+
+                var parent_column = $(grid_selector).closest('[class*="col-"]');
+
+                //resize to fit page size
+                $(window).on('resize.jqGrid', function () {
+                    $(grid_selector).jqGrid('setGridWidth', parent_column.width());
+                    //  $(grid_selector).jqGrid('setGridHeight', parent_column.height());//设置表格高度
+                })
+
+                //resize on sidebar collapse/expand
+                $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+                    if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+                        //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
+                        setTimeout(function () {
+                            $(grid_selector).jqGrid('setGridWidth', parent_column.width());
+                            //  $(grid_selector).jqGrid('setGridHeight', parent_column.height());//设置表格高度
+                        }, 0);
+                    }
+                })
+
+                jQuery(grid_selector).jqGrid({
+                    data: grid_data,
+                    datatype: "local",
+                    height: 300,
+                    colNames: ['ID', '销售日期', '名称', '是否备份', '商 店', '特 征'],
+                    colModel: [
+                        { name: 'id', index: 'id', width: 60 },
+                        { name: 'sdate', index: 'sdate', width: 90 },
+                        { name: 'name', index: 'name', width: 100 },
+                        { name: 'stock', index: 'stock', width: 70 },
+                        { name: 'ship', index: 'ship', width: 90 },
+                        { name: 'note', index: 'note', width: 150 }
+                    ],
+                    viewrecords: true,
+                    rowNum: 10,
+                    rowList: [10, 30, 50],
+                    pager: pager_selector,
+                    altRows: true,
+                    multiselect: true,//定义是否多选
+                    multiboxonly: true,
+
+                    loadComplete: function () {
+                        var table = this;
+                        setTimeout(function () {
+                            styleCheckbox(table);
+                            updatePagerIcons(table);
+                        }, 0);
+                    },//加载完成以后设置分页工具栏按钮
+                    caption: "列表标题"//表格名称
+
+                });
+                $(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
+
+                //设置表格选着框的样式
+                function styleCheckbox(table) {
+
+                    $(table).find('input:checkbox').addClass('ace')
+					.wrap('<label />')
+					.after('<span class="lbl align-top" />')
+
+
+                    $('.ui-jqgrid-labels th[id*="_cb"]:first-child')
+					.find('input.cbox[type=checkbox]').addClass('ace')
+					.wrap('<label />').after('<span class="lbl align-top" />');
+
+                }
+
+
+
+
+                //replace icons with FontAwesome icons like above
+                function updatePagerIcons(table) {
+                    var replacement =
+                    {
+                        'ui-icon-seek-first': 'ace-icon fa fa-angle-double-left bigger-140',
+                        'ui-icon-seek-prev': 'ace-icon fa fa-angle-left bigger-140',
+                        'ui-icon-seek-next': 'ace-icon fa fa-angle-right bigger-140',
+                        'ui-icon-seek-end': 'ace-icon fa fa-angle-double-right bigger-140'
+                    };
+                    $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function () {
+                        var icon = $(this);
+                        var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+
+                        if ($class in replacement) icon.attr('class', 'ui-icon ' + replacement[$class]);
+                    })
+                }
+
+                $(document).one('ajaxloadstart.page', function (e) {
+                    $.jgrid.gridDestroy(grid_selector);
+                    $('.ui-jqdialog').remove();
+                });
+            });
+        </script>
+    }

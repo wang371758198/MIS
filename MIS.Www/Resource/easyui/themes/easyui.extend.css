@@ -1,0 +1,12 @@
+﻿.panel-loading {
+    padding: 11px 0px 10px 30px;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    width: 17%;
+    height: 10%;
+}
+
+.panel-body {
+    overflow: hidden;
+}

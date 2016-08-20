@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewBag.Title = "Main";
+   
+}
+
+<h2>Main</h2>
+@Html.Action("APartialPage","Home" ,new MIS.Models.TestClass() {  CurrentDateTime=DateTime.Now} )

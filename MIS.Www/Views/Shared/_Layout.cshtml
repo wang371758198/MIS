@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link href="~/Resource/easyui/themes/bootstrap/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="~/Resource/easyui/themes/easyui.extend.css" rel="stylesheet" type="text/css" />
+    <link href="~/Resource/easyui/themes/icon.css" rel="stylesheet" type="text/css" />
+
+    @RenderSection("style", false)
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north'" style="height:10%;"></div>
+    <div data-options="region:'west',title:'菜 单'" style="width:10%;">
+        
+
+    </div>
+    <div data-options="region:'center',border:false" style="width:90%;">
+        <div class="easyui-tabs" id="tabs" data-options="fit:true">
+            <div id="workplatform" title="工作台" data-options="iconCls:'icon-home'">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+    <div data-options="region:'south'" style="height:5%;">
+        <div style="width:24%;position:absolute;left:39%;"> &copy; 2016-2017 本域名所属人 版权所有 豫ICP备16014795号-1</div>
+    </div>
+
+</body>
+</html>
+<script type="text/javascript" src="~/Resource/easyui/jquery.min.js"></script>
+<script type="text/javascript" src="~/Resource/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="~/Resource/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="~/Resource/js/jquery.extend.js"></script>
+<script type="text/javascript">
+    $('#tabs').tabs({
+        fit: true,
+        tools: [{
+            text: '刷 新',
+            iconCls: 'icon-mini-refresh',
+            handler: function () {
+                var tab = $('#tabs').tabs("getSelected");
+                console.log(tab);
+                if (tab) {
+                    if (!tab.attr("id"))
+                        tab.panel("refresh");
+                    else
+                        location.reload();
+                }
+            }
+        }]
+    });
+
+    $('#btn').on('click', function () {
+        $('#tabs').addTab({
+            title: "菜单列表",
+            iconCls: "icon-menu",
+            href: "/MenuInfo/Index"
+        });
+    });
+</script>
+@RenderSection("script", false)

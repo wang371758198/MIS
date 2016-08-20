@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Quartz.Net在C#中使用示例";
+    ViewBag.PositionRoot = "Quartz.Net";
+    ViewBag.PositionSecond = "Quartz.Net在Asp.net MVC中的使用";
+}
+
+<div class="page-content">
+    <div class="row">
+        <h4 class="widget-title lighter" style="text-align: center;">
+            <i class="ace-icon fa  blue">Quartz.Net在Asp.net MVC中的使用 </i>
+        </h4>
+        <div class="hr hr-10 hr-dotted"></div>
+        <p>
+            首先创建一个Asp.net MVC项目命名为QuartzMvcDemo，然后安装Quartz.Net组件。
+        </p>
+        <img src="~/Images/Quartz/2E11.tmp.jpg" width="100%"/>
+        <br/>
+        <p class="indent">
+            Quartz.Net一个最简单任务至少包括三部分实现：job(作业),trigger(触发器)以及scheduler(调度器)。其中job 是你需要在一个定时任务中具体执行的业务逻辑，trigger则规定job何时并按照何种规则执行，最终job和trigger会被注册到 scheduler(调度器)中，scheduler负责协调job和trigger的运行。
+        </p>
+        <p class="indent">
+            在Quartz.Net中，一个job(作业)即为一个类，为了让job能在Quartz.Net的体系中执行，我们必须实现Quartz.Net提供的IJob接口的Execute方法，如本例所实现的IJob接口TestJob类：
+        </p>
+        <pre class="brush:csharp;toolbar:false">
+            public class TestJob : IJob
+            {
+                public void Execute(IJobExecutionContext context)
+                {
+                    SqlConnection conn = new SqlConnection(@@"data source=127.0.0.1\dev;Initial Catalog=Gungnir;User ID=gungnirreader;Password=itsme999");
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("INSERT INTO[123]..Msg VALUES(@@Content,@@CreateDT)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@@Content", Guid.NewGuid().ToString());
+                        cmd.Parameters.AddWithValue("@@CreateDT", DateTime.Now);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+        </pre>
+        <p>
+            Execute方法有一个IJobExecutionContext的接口对象作为参数，这个参数包含了定义这个类的job(作业)的配置信息。当然，作为示例，在本例中，我们没有使用到这个参数。
+        </p>
+        <br/>
+        <p class="indent">
+            我们使用StdSchedulerFactory.GetDefaultScheduler()创建了一个scheduler(调度器) 并随之 启动了这个调度器，然后创建了一个简单的Quartz.Net触发器并对这个触发器进行了一些配置:指定了触发器的名称为triggerName,触发器 的分组为groupName,指定每5秒触发一次并一直循环触发。最后通过scheduler.ScheduleJob()方法把job(作业)和 trigger(触发器)注册到了调度器中，这样一个完整的定时任务就定制完成了。
+        </p>
+        <pre class="brush:csharp;toolbar:false">
+             /// &lt;summary&gt;
+            /// 触发器
+            /// &lt;/summary&gt;
+            public class ReportJobScheduler
+            {
+                public static void Start()
+                {
+                    IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
+                    scheduler.Start();
+                    IJobDetail job = JobBuilder.Create&lt;QuartzMvcDemo.Jobs.TestJob&lt;().Build();
+                    ITrigger trigger = TriggerBuilder.Create()
+                      .WithIdentity("triggerName", "groupName")
+                      .WithSimpleSchedule(t =>
+                        t.WithIntervalInSeconds(5)
+                         .RepeatForever())
+                         .Build();
+                    scheduler.ScheduleJob(job, trigger);
+                }
+            }
+        </pre>
+        <p>
+            最后，我们还要做的一件事情就是启动我们定制好的定时任务，我们把这个任务放到项目程序的全局cs文件(Global.asax)的Application_Start方法中来执行：
+        </p>
+        <pre class="brush:csharp;toolbar:false" style="width:100%">
+                protected void Application_Start()
+                {
+                    AreaRegistration.RegisterAllAreas();
+                    FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+                    RouteConfig.RegisterRoutes(RouteTable.Routes);
+                    BundleConfig.RegisterBundles(BundleTable.Bundles);
+                    ReportJobScheduler.Start();
+                }
+        </pre>
+
+        <p>
+            注意:
+            <br/>
+            IIS的程序池默认回收间隔是1740分钟(29小时)，在自动回收过程中，应用程序池将会清空，保留在内存中的数据将会被清理（相当于IIS重启）。
+            <br/>
+            所以要修改IIS应用池的高级配置，不让IIS自动回收，配置在Asp.net的后台线程才不会被IIS自动回收。
+            <br/>
+            在IIS中找到这个站点所用的程序池，点击“高级设置...”
+            <br/>
+            在打开的列表中更改以下设置：
+            <br />
+            回收——固定时间间隔（分钟） 改为 0
+            <br />
+            ——虚拟/专用内存限制（KB） 改为 0
+            <br/>
+            进程模型——闲置超时（分钟） 改为 0
+        </p>
+        <img src="~/Images/Quartz/3CA4.tmp.jpg" width="100%"/>
+        <br/>
+        <p>
+            运行的结果：每五秒钟添加一条数据
+        </p>
+        <img src="~/Images/Quartz/D712.tmp.jpg" width="100%"/>
+    </div>
+</div>
+

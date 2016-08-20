@@ -1,0 +1,9 @@
+D:\DMB\DMB.Frame\bin\Debug\log4net.dll
+D:\DMB\DMB.Frame\bin\Debug\System.Net.Http.dll
+D:\DMB\DMB.Frame\bin\Debug\log4net.xml
+D:\DMB\DMB.Frame\bin\Debug\System.Net.Http.xml
+D:\DMB\DMB.Frame\bin\Debug\zh-Hans\System.Net.Http.resources.dll
+D:\DMB\DMB.Frame\bin\Debug\MIS.Frame.dll
+D:\DMB\DMB.Frame\bin\Debug\MIS.Frame.pdb
+D:\DMB\DMB.Frame\obj\Debug\MIS.Frame.dll
+D:\DMB\DMB.Frame\obj\Debug\MIS.Frame.pdb

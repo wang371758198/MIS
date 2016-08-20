@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "菜单信息";
+    Layout = null;
+}
+@*@model IEnumerable<MIS.Models.MenuInfo>*@
+<div id="menuToolbar">
+    <a id="btnAdd" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add'">新 增</a>
+    <a id="btnEdit" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-edit',disabled:true">编 辑</a>
+    <a id="btnDel" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',disabled:true">删 除</a>
+</div>
+<table id="MenuInfoTable" title="菜 单">
+   @*<tbody>
+       @foreach (var item in Model)
+       {
+           <tr>
+               <td>@item.ID</td>
+               <td>@item.MenuName</td>
+               <td>@item.Uri</td>
+               <td>@item.Grade</td>
+               <td>@item.Icon</td>
+               <td>@item.Remark</td>
+               <td>@item.CreateDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+               <td>@item.UpdateDateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+           </tr>
+       }
+   </tbody>*@
+</table>
+<div id="edit"></div>
+<script type="text/javascript" src="~/Resource/js/menuinfo.js"></script>
+<script type="text/javascript" src="~/Resource/js/ajaxfileupload.js"></script>
+

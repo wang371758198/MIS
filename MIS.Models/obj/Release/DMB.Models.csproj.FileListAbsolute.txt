@@ -1,0 +1,8 @@
+D:\DMB\DMB.Models\bin\Release\DMB.Models.dll
+D:\DMB\DMB.Models\bin\Release\DMB.Models.pdb
+D:\DMB\DMB.Models\obj\Release\DMB.Models.csprojResolveAssemblyReference.cache
+D:\DMB\DMB.Models\obj\Release\DMB.Models.dll
+D:\DMB\DMB.Models\obj\Release\DMB.Models.pdb
+D:\DMB\DMB.Models\bin\Release\System.Net.Http.dll
+D:\DMB\DMB.Models\bin\Release\System.Net.Http.xml
+D:\DMB\DMB.Models\bin\Release\zh-Hans\System.Net.Http.resources.dll

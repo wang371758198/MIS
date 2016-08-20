@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+@model MIS.Models.MenuInfo
+
+<form id="menuInfoForm" method="post"  style="width:100%;height:100%;padding:2px 5px;background-color:#ffffff;">
+    <table  style="width:100%;">
+        <tr>
+            <td>父级菜单:</td>
+            <td>
+                @*<input class="easyui-textbox" id="ParentMenuID" name="ParentMenuID"  data-options="width:300"  />*@
+                <select class="easyui-combobox" id="ParentMenuID" name="ParentMenuID" data-options="width:300">
+                    <option value="">请选择父级菜单</option>
+                    @if (ViewBag.ParentMenuInfos != null)
+                    {
+                        IEnumerable<MIS.Models.MenuInfo> list = (IEnumerable<MIS.Models.MenuInfo>)ViewBag.ParentMenuInfos;
+
+                        foreach (var item in list)
+                        {
+                            if (item.ID.CompareTo(Model.ParentMenuID) == 0)
+                            {
+                                <option value="@item.ID" selected="selected">@item.MenuName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.ID">@item.MenuName</option>
+                            }
+
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>菜单名称:</td>
+            <td>
+                <input class="easyui-textbox" id="MenuName"  name="MenuName"  value="@Model.MenuName" data-options="width:300,required:true"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Uri:
+            </td>
+            <td>
+                <input class="easyui-textbox" id="Uri" name="Uri" data-options="width:300" value="@Model.Uri"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                图标:
+            </td>
+            <td>
+                <img id="imgUri" style="width:30px;height:24px;vertical-align:middle;" @(string.IsNullOrWhiteSpace(Model.Icon)==true?"":"src="+Model.Icon) />
+                @*<input class="easyui-filebox"  id="Icon" name="Icon"  data-options="width:260,buttonText:'请选择文件',required:true,accept:'image/*',onChange:function(newValue,oldValue){  }" />*@
+                <input type="file"  id="fileName" name="fileName"  onchange="$('#fileName').fileUpload(this, 'imgUri', 'Icon', 'menuInfoForm');"/>
+                <input type="hidden" id="Icon" name="Icon" value="@Model.Icon"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                排序:
+            </td>
+            <td>
+                <input class="easyui-textbox" id="Grade" name="Grade" data-options="width:300,required:true" value="@Model.Grade"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                备注:
+            </td>
+            <td>
+                <input class="easyui-textbox" id="Remark" name="Remark" data-options="width:300,multiline:true,height:80" value="@Model.Remark"/>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" value="@Model.ID" id="ID" name="ID"/>
+</form>
+
+

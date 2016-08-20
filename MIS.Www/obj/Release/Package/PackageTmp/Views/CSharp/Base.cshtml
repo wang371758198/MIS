@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "C#->基础信息";
+    ViewBag.PositionRoot = "C#";
+    ViewBag.PositionSecond = "基础信息";
+}
+<div class="page-content">
+    <div class="row">
+        <h4 class="widget-title lighter">
+            <i class="ace-icon fa fa-star  blue">装箱与拆箱 </i>
+        </h4>
+        <div class="hr hr-10 hr-dotted"></div>
+        <p class="indent">
+            装箱（boxing)和拆箱(unboxing)机制使得在C#类型系统中，任何值类型、引用类型和object（对象）类型之间进行转换，这种转换称为绑定连接。简单地说，有了装箱和拆箱的概念，对任何类型的值来说最终都可看作是object类型。   1、装箱转换
+
+            含义：将一个值类型隐式地转换成一个object类型，或把这个值类型转换成一个被该值类型应用的接口类型，把一个值类型的值装箱，就是创建一个object实例并将值复制给这个object
+        </p>
+        <p class="indent">
+            值类型,包括原类型（Sbyte、Byte、Short、Ushort、Int、Uint、Long、Ulong、Char、Float、Double、Bool、Decimal）、枚举 (enum) 、结构 (struct)。
+        </p>
+        <p class="indent">
+            引用类型,包括类、数组、接口、委托、字符串等
+        </p>
+        <p>
+            <b>例如：</b>
+            <pre class="brush:csharp;toolbar:false" title="代码">
+                /*
+                    4558875
+                */
+                int I=10;   object obj=I;
+                public void name()
+                {
+
+                }
+                //也可用显式的方法进行装箱操作： 
+                object obj=（object)I;
+            </pre>
+           
+        </p>
+    </div>
+
+</div>
+

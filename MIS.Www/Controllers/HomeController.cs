@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MIS.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MIS.Www.Controllers
 {
@@ -39,13 +40,12 @@ namespace MIS.Www.Controllers
             return View();
         }
 
-
-        [OutputCache(Duration =5)]
-        public PartialViewResult APartialPage(UserInfo model)
+        public ActionResult GetHomeJson()
         {
-            ViewBag.ReturnUrl = model.CurrentDateTime.ToString("yyyy-MM-dd HH:mm:ss") + "1111111111";
-            return PartialView();
+            return Content("");
         }
+
+
 
     }
 }

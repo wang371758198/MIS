@@ -1,8 +1,0 @@
-D:\DMB\DMB.Frame\bin\Release\DMB.Frame.dll
-D:\DMB\DMB.Frame\bin\Release\DMB.Frame.pdb
-D:\DMB\DMB.Frame\obj\Release\DMB.Frame.csprojResolveAssemblyReference.cache
-D:\DMB\DMB.Frame\obj\Release\DMB.Frame.dll
-D:\DMB\DMB.Frame\obj\Release\DMB.Frame.pdb
-D:\DMB\DMB.Frame\bin\Release\System.Net.Http.dll
-D:\DMB\DMB.Frame\bin\Release\System.Net.Http.xml
-D:\DMB\DMB.Frame\bin\Release\zh-Hans\System.Net.Http.resources.dll
